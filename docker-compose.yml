@@ -1,16 +1,15 @@
 version: '3.8'
 
 services:
-  # 1. Ollama Servisi (GPU Destekli Yerel LLM Motoru)
+#yapay zeka motoru
   ollama:
     image: ollama/ollama:latest
     container_name: ollama-service
     ports:
       - "11434:11434"
+    #kalıcı hafıza
     volumes:
       - ollama_data:/root/.ollama
-    # İzlediğiniz videodaki '--gpus all' komutunun Docker Compose üzerindeki karşılığıdır.
-    # Bu kısım yerel NVIDIA GPU'nuzun konteyner tarafından kullanılmasını sağlar.
     deploy:
       resources:
         reservations:
@@ -20,8 +19,9 @@ services:
               capabilities: [gpu]
     restart: unless-stopped
 
-  # 2. Python Web ve RAG Uygulamanız (Streamlit & Pydantic AI)
+  #streamlit ve rag kodlarının çalışacağı alanı tanımlar
   app:
+    #bulunduğun klosördeki dockerfile isimli kısıma bakıp sıfırdan inşa eder
     build: .
     container_name: rag-app-service
     ports:
@@ -34,5 +34,6 @@ services:
       - ollama
     restart: unless-stopped
 
+#yapay zeka moddelerinin saklanaxağı sanal diski kayıt altın alma oluşturma
 volumes:
   ollama_data:

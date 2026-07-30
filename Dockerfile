@@ -2,9 +2,11 @@ FROM python:3.10-slim
 
 WORKDIR /app
 
+#kütüphaneleri kurma
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
+#yazdığım kodları içeri alma
 COPY . .
 
 EXPOSE 8501
