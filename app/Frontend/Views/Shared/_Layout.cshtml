@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Uygulama</title>
+    
+    <!-- Senin oluşturduğun CSS dosyası -->
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <div style="padding: 10px; background-color: #f8f9fa; border-bottom: 1px solid #ddd;">
+            <h2>Proje Paneli</h2>
+        </div>
+    </header>
+
+    <div class="container" style="padding: 20px;">
+        <main role="main">
+            <!-- ÖNEMLİ: Index.cshtml veya Sonuc.cshtml gibi sayfaların içeriği tam olarak buraya basılır -->
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer style="margin-top: 20px; padding: 10px; background-color: #f8f9fa; border-top: 1px solid #ddd; text-align: center;">
+        <p>&copy; 2026 - Tüm Hakları Saklıdır</p>
+    </footer>
+
+    <!-- Senin oluşturduğun JS dosyası -->
+    <script src="~/js/app.js" asp-append-version="true"></script>
+    
+    <!-- Sayfalara özel eklenebilecek ekstra JavaScript kodları için -->
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

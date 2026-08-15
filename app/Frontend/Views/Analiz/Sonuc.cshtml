@@ -1,0 +1,55 @@
+@model Frontend.Models.RaporViewModel
+@{
+    ViewData["Title"] = "Analiz Sonucu";
+}
+
+<div class="page-wrapper">
+    <h2>Sözleşme Analiz Raporu</h2>
+    
+    <!-- Modüler ancak renk bütünlüğüne sahip görsel kapsayıcılar (div) -->
+    <div class="content-container">
+        <h3>1. Temel Bilgiler</h3>
+        <p><strong>Konu:</strong> @Model.Konu</p>
+        <p><strong>Geçerlilik Süresi:</strong> @Model.GecerlilikSuresi</p>
+        <p><strong>Fesih Şartları:</strong> @Model.FesihSartlari</p>
+    </div>
+
+    <div class="content-container">
+        <h3>2. Taraflar</h3>
+        <ul>
+            @foreach (var taraf in Model.Taraflar)
+            {
+                <li>@taraf</li>
+            }
+        </ul>
+    </div>
+
+    <div class="content-container">
+        <h3>3. Yönetici Özeti</h3>
+        <p>@Model.YoneticiOzeti</p>
+    </div>
+
+    <div class="content-container">
+        <h3>4. Tespit Edilen Riskler</h3>
+        @if (Model.BulunanRiskler != null && Model.BulunanRiskler.Any())
+        {
+            @foreach (var risk in Model.BulunanRiskler)
+            {
+                <div class="risk-item">
+                    <p class="risk-title">
+                        <strong>@risk.Baslik</strong> (Skor: @risk.RiskSkoru/10)
+                    </p>
+                    <p class="risk-desc">@risk.Aciklama</p>
+                </div>
+            }
+        }
+        else
+        {
+            <p>Sözleşmede kritik bir risk tespit edilmedi.</p>
+        }
+    </div>
+    
+    <div class="action-container">
+        <a asp-controller="Analiz" asp-action="Index" class="primary-btn">Yeni Sözleşme Yükle</a>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Sözleşme Yükle";
+}
+
+<div class="page-wrapper">
+    <div class="content-container">
+        <h2>Otomatik Sözleşme Analisti</h2>
+        <p>Lütfen analiz edilmesini istediğiniz sözleşmeyi (PDF veya Word) yükleyin.</p>
+
+        <!-- Hata mesajı varsa gösterilir -->
+        @if (ViewBag.Hata != null)
+        {
+            <div class="alert-box">@ViewBag.Hata</div>
+        }
+
+        <!-- AnalizController içindeki AnalizEt metoduna POST isteği atar -->
+        <form asp-controller="Analiz" asp-action="AnalizEt" method="post" enctype="multipart/form-data" id="uploadForm">
+            <div class="form-group">
+                <input type="file" name="dosya" accept=".pdf,.docx" required class="file-input" />
+            </div>
+            <button type="submit" class="primary-btn" onclick="showLoading()">Sözleşmeyi Analiz Et</button>
+        </form>
+
+        <!-- Yükleme Animasyonu (Başlangıçta Gizli) -->
+        <div id="loadingSection" style="display:none;" class="loading-container">
+            <div class="spinner"></div>
+            <p>⏳ Sözleşme vektörlere ayrılıyor ve yapay zeka tarafından inceleniyor. Lütfen bekleyin...</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showLoading() {
+        // Form gönderildiğinde butonu gizle, animasyonu göster
+        document.getElementById('uploadForm').style.display = 'none';
+        document.getElementById('loadingSection').style.display = 'flex';
+    }
+</script>

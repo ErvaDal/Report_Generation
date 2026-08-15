@@ -1,0 +1,228 @@
+{
+  "Version": 1,
+  "Hash": "cSP83ah+6u2/GnnmsNSWM6h0+MBS4zmOG8+CoVIu9m8=",
+  "Source": "Frontend",
+  "BasePath": "_content/Frontend",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "Frontend\\wwwroot",
+      "Source": "Frontend",
+      "ContentRoot": "C:\\Users\\Erva\\Desktop\\Staj\\app\\Frontend\\wwwroot\\",
+      "BasePath": "_content/Frontend",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\Erva\\Desktop\\Staj\\app\\Frontend\\wwwroot\\css\\style.css",
+      "SourceId": "Frontend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Erva\\Desktop\\Staj\\app\\Frontend\\wwwroot\\",
+      "BasePath": "_content/Frontend",
+      "RelativePath": "css/style#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "p1jyrkgdcq",
+      "Integrity": "E2AAI0cwXXP/RFBeAPBdoz5Voj90B6kVHrhLq4tebdo=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\style.css"
+    },
+    {
+      "Identity": "C:\\Users\\Erva\\Desktop\\Staj\\app\\Frontend\\wwwroot\\js\\app.js",
+      "SourceId": "Frontend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Erva\\Desktop\\Staj\\app\\Frontend\\wwwroot\\",
+      "BasePath": "_content/Frontend",
+      "RelativePath": "js/app#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "5ipweew5fc",
+      "Integrity": "47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\app.js"
+    }
+  ],
+  "Endpoints": [
+    {
+      "Route": "css/style.css",
+      "AssetFile": "C:\\Users\\Erva\\Desktop\\Staj\\app\\Frontend\\wwwroot\\css\\style.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1652"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"E2AAI0cwXXP/RFBeAPBdoz5Voj90B6kVHrhLq4tebdo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 14 Aug 2026 16:56:13 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-E2AAI0cwXXP/RFBeAPBdoz5Voj90B6kVHrhLq4tebdo="
+        }
+      ]
+    },
+    {
+      "Route": "css/style.p1jyrkgdcq.css",
+      "AssetFile": "C:\\Users\\Erva\\Desktop\\Staj\\app\\Frontend\\wwwroot\\css\\style.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1652"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"E2AAI0cwXXP/RFBeAPBdoz5Voj90B6kVHrhLq4tebdo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 14 Aug 2026 16:56:13 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "p1jyrkgdcq"
+        },
+        {
+          "Name": "label",
+          "Value": "css/style.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-E2AAI0cwXXP/RFBeAPBdoz5Voj90B6kVHrhLq4tebdo="
+        }
+      ]
+    },
+    {
+      "Route": "js/app.5ipweew5fc.js",
+      "AssetFile": "C:\\Users\\Erva\\Desktop\\Staj\\app\\Frontend\\wwwroot\\js\\app.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "0"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 06 Aug 2026 18:13:26 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "5ipweew5fc"
+        },
+        {
+          "Name": "label",
+          "Value": "js/app.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU="
+        }
+      ]
+    },
+    {
+      "Route": "js/app.js",
+      "AssetFile": "C:\\Users\\Erva\\Desktop\\Staj\\app\\Frontend\\wwwroot\\js\\app.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "0"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 06 Aug 2026 18:13:26 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU="
+        }
+      ]
+    }
+  ]
+}
