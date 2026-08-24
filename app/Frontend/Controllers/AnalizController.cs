@@ -17,6 +17,9 @@ namespace Frontend.Controllers
             // Python FastAPI sunucunla haberleşecek istemciyi oluşturuyoruz.
             _httpClient = new HttpClient();
             
+            // Zaman aşımı (Timeout) süresini 10 dakikaya çıkarıyoruz (BUNU EKLEDİK)
+            _httpClient.Timeout = System.TimeSpan.FromMinutes(10);
+            
             // DİKKAT: FastAPI varsayılan olarak 8000 portunda çalışır. 
             // Eğer Python sunucun farklı bir porttaysa burayı güncelle.
             _httpClient.BaseAddress = new System.Uri("http://127.0.0.1:8000"); 
@@ -41,8 +44,7 @@ namespace Frontend.Controllers
                 // 1. C#'a yüklenen dosyayı Python'a göndermek üzere form formatına (Multipart) çeviriyoruz
                 using var content = new MultipartFormDataContent();
                 using var fileStream = dosya.OpenReadStream();
-                using var fileContent = new StreamCo
-                ntent(fileStream);
+                using var fileContent = new StreamContent(fileStream);
                 
                 fileContent.Headers.ContentType = MediaTypeHeaderValue.Parse(dosya.ContentType);
                 
@@ -73,7 +75,7 @@ namespace Frontend.Controllers
             }
             catch (System.Exception ex)
             {
-            / Sunucu kapalıysa veya ulaşılamıyorsa düşeceği yer
+            // Sunucu kapalıysa veya ulaşılamıyorsa düşeceği yer
                 ViewBag.Hata = $"Python arka uç sunucusuna bağlanılamadı. Sunucunun açık olduğundan emin olun. Hata: {ex.Message}";
                 return View("Index");
             }

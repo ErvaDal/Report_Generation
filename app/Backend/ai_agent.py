@@ -1,7 +1,7 @@
 import os
 from pydantic_ai import Agent
 from pydantic_ai.models.ollama import OllamaModel
-from schemas import SozlesmeRaporu # Kendi yazdığımız şemayı içe aktarıyoruz
+from app.Backend.schemas import SozlesmeRaporu
 
 os.environ["OLLAMA_BASE_URL"] = "http://localhost:11434/v1"
 yerel_model = OllamaModel(model_name='qwen3.5:9b')

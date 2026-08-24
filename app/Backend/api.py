@@ -1,28 +1,36 @@
 from fastapi import FastAPI, UploadFile, File, HTTPException
 import tempfile
 import os
+import email.header
 from markitdown import MarkItDown
 
-#kendi yazdığım backend servisleri
+# kendi yazdığım backend servisleri
 from app.Backend.database import sozlesmeyi_veritabanina_kaydet, sozlesmeden_ilgili_kisimlari_bul
 from app.Backend.ai_agent import analist_ajan
 
-#API Uygulamasını Başlatıyoruz
+# API Uygulamasını Başlatıyoruz
 app = FastAPI(
     title="Sözleşme Analisti API",
     description="Sözleşmeleri RAG ve LLM ile analiz eden yerel kurumsal servis."
 )
 
-#Dışarıdan İstek Alacak uç nokte
+# Dışarıdan İstek Alacak uç nokta
 @app.post("/api/analiz-et")
 async def sozlesme_analiz_et(dosya: UploadFile = File(...)):
-    # Sadece PDF ve DOCX kabul et
-    if not dosya.filename.endswith(('.pdf', '.docx')):
-        raise HTTPException(status_code=400, detail="Geçersiz format! Sadece PDF ve DOCX yüklenebilir.")
-
-    dosya_uzantisi = f".{dosya.filename.split('.')[-1]}"
     
-    # Dosyayı belleğe değil, geçici bir diske alıyoruz
+    # 1. C#'tan gelen şifreli (Türkçe karakterli) dosya adını çöz
+    decoded_header = email.header.decode_header(dosya.filename)
+    gercek_dosya_adi = ""
+    for part, encoding in decoded_header:
+        if isinstance(part, bytes):
+            gercek_dosya_adi += part.decode(encoding or 'utf-8')
+        else:
+            gercek_dosya_adi += str(part)
+
+    # Şifresi çözülmüş gerçek isimden dosya uzantısını al
+    _, dosya_uzantisi = os.path.splitext(gercek_dosya_adi)
+
+    # 2. Dosyayı belleğe değil, geçici bir diske alıyoruz
     with tempfile.NamedTemporaryFile(delete=False, suffix=dosya_uzantisi) as tmp_file:
         tmp_file.write(await dosya.read())
         tmp_file_path = tmp_file.name
@@ -44,9 +52,9 @@ async def sozlesme_analiz_et(dosya: UploadFile = File(...)):
 
         # Llama 3.2 Ajanını Tetikleme
         prompt = f"Aşağıdaki sözleşme parçalarını analiz et ve kurumsal rapor şablonunu doldur:\n\n{filtrelenmis_metin}"
-        sonuc = analist_ajan.run_sync(
+        sonuc = await analist_ajan.run(
             prompt,
-            model_settings={"max_tokens": 1500}
+            model_settings={"max_tokens": 8192}
         )
         
         # Streamlit'te ekrana yazdırdığımız veriyi, burada doğrudan Geri Döndürüyoruz
@@ -60,4 +68,4 @@ async def sozlesme_analiz_et(dosya: UploadFile = File(...)):
     finally:
         # İşlem bitince veya hata verince sunucuda yer kaplamaması için geçici dosyayı sil
         if os.path.exists(tmp_file_path):
-            os.path.remove(tmp_file_path)
+            os.remove(tmp_file_path)

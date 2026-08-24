@@ -15,10 +15,8 @@
         }
 
         <!-- AnalizController içindeki AnalizEt metoduna POST isteği atar -->
-        <form asp-controller="Analiz" asp-action="AnalizEt" method="post" enctype="multipart/form-data" id="uploadForm">
-            <div class="form-group">
-                <input type="file" name="dosya" accept=".pdf,.docx" required class="file-input" />
-            </div>
+<form action="/Analiz/AnalizEt" method="post" enctype="multipart/form-data" id="uploadForm">            <div class="form-group">
+        <input type="file" name="dosya" required class="file-input" />            </div>
             <button type="submit" class="primary-btn" onclick="showLoading()">Sözleşmeyi Analiz Et</button>
         </form>
 
