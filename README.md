@@ -28,8 +28,10 @@ Projeyi yerel ortamınızda çalıştırmak için aşağıdaki adımları sıras
 
 ### 2. Sanal Ortam Oluşturun
   python -m venv venv
+  
   Windows için:
   venv\Scripts\activate
+  
   Linux/Mac için:
   source venv/bin/activate
 
